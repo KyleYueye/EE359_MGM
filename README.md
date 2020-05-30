@@ -13,3 +13,13 @@
 运行 `python offline_test.py` 测试。Offline 测试说明，采用 Willow-Object 数据集中五个类 Car、Duck、Face、Motorbike、Winebottle，每个类 5 轮测试，每次随机选取一个类中的 24 张图，每张图有 10 个内点 2 个外点，评测精度与速度。
 
 运行 `python online_test.py` 测试。Online 测试说明，采用 Willow-Object 数据集中五个类 Car、Duck、Face、Motorbike、Winebottle，每个类 5 轮测试，每次随机选取一个类中的 16 张图作为 base，接下来会依次到来 8 张图，每张图有 10 个内点 2 个外点，评测精度与速度。
+
+##Testing Results:
+offline test
+![avatar](fig/offline.png)
+
+online test mgm-spfa
+![avatar](fig/online_mgmspfa.png)
+
+online test fast-spfa
+![avatar](fig/online_fastspfa.png)
