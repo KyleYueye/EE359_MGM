@@ -25,12 +25,11 @@ def consistency_pair(X):
     con_pair = np.zeros((m, m))
     for i in range(m):
         for j in range(m):
-            cnt = 0.0
+            res = 0.0
             X_ij = X[i, j]
             for k in range(m):
-                # X_ikj = X[i, k] * X[k, j]
-                cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
-            con_pair[i, j] = 1 - cnt / (2 * m * n)
+                res += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
+            con_pair[i, j] = 1 - res / (2 * m * n)
     return con_pair
 
 
@@ -52,10 +51,11 @@ def mgm_floyd(X, K, num_graph, num_node):
         consistency = consistency_pair(X)
         for i in range(num_graph):
             for j in range(num_graph):
-                Xo = X[i, j]
-                Xu = np.matmul(X[i, k], X[k, j])
-                so = c * np.sqrt(consistency[i, j]) + (1 - c) * afnty_scr(Xo, K[i, j], max_afnty)
-                su = c * np.sqrt(consistency[i, k] * consistency[k, j]) + (1 - c) * afnty_scr(Xu, K[i, j], max_afnty)
-                if su > so:
-                    X[i, j] = Xu
+                X_org = X[i, j]
+                X_opt = np.matmul(X[i, k], X[k, j])
+                S_org = c * np.sqrt(consistency[i, j]) + (1 - c) * afnty_scr(X_org, K[i, j], max_afnty)
+                S_opt = c * np.sqrt(consistency[i, k] * consistency[k, j]) + (1 - c) * afnty_scr(X_opt, K[i, j],
+                                                                                                 max_afnty)
+                if S_opt > S_org:
+                    X[i, j] = X_opt
     return X

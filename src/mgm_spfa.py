@@ -25,12 +25,11 @@ def consistency_pair(X):
     con_pair = np.zeros((m, m))
     for i in range(m):
         for j in range(m):
-            cnt = 0.0
+            res = 0.0
             X_ij = X[i, j]
             for k in range(m):
-                # X_ikj = X[i, k] * X[k, j]
-                cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
-            con_pair[i, j] = 1 - cnt / (2 * m * n)
+                res += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
+            con_pair[i, j] = 1 - res / (2 * m * n)
     return con_pair
 
 
