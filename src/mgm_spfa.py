@@ -86,21 +86,44 @@ def mgm_spfa(K, X, num_graph, num_node):
         cnt += 1
         G_x = queue[0]
         queue.remove(G_x)
-        for i in range(num_graph - 1):
-            if i == G_x:
+        for G_y in range(num_graph - 1):
+            if G_y == G_x:
                 continue
-            X_org = X[num_graph - 1, i]
-            X_opt = np.matmul(X[num_graph - 1, G_x], X[G_x, i])
-            K_org = K[num_graph - 1, i]
-            S_org = c * np.sqrt(consistency[num_graph - 1, i]) + (1 - c) * afnty_scr(X_org, K_org, max_afnty)
-            S_opt = c * np.sqrt(consistency[num_graph - 1, G_x] * consistency[G_x, i]) + (1 - c) * afnty_scr(X_opt,
-                                                                                                             K_org,
-                                                                                                             max_afnty)
+            X_org = X[num_graph - 1, G_y]
+            X_opt = np.matmul(X[num_graph - 1, G_x], X[G_x, G_y])
+            K_org = K[num_graph - 1, G_y]
+            S_org = c * np.sqrt(consistency[num_graph - 1, G_y]) + (1 - c) * afnty_scr(X_org, K_org, max_afnty)
+            S_opt = c * np.sqrt(consistency[num_graph - 1, G_x] * consistency[G_x, G_y]) + (1 - c) * afnty_scr(X_opt,
+                                                                                                               K_org,
+                                                                                                               max_afnty)
             if S_org < S_opt:
-                X[num_graph - 1, i] = X_opt
-                store.append((num_graph - 1, i))
-                X[i, num_graph - 1] = X_opt.transpose()
-                store.append((i, num_graph - 1))
+                X[num_graph - 1, G_y] = X_opt
+                store.append((num_graph - 1, G_y))
+                X[G_y, num_graph - 1] = X_opt.transpose()
+                store.append((G_y, num_graph - 1))
+                queue.append(G_y)
+
+                """Small Label First"""
+                # backQ = queue[-1]
+                # dbq = c * np.sqrt(consistency[num_graph - 1, backQ]) + (1 - c) * \
+                #       afnty_scr(X[num_graph - 1, backQ], K[num_graph - 1, backQ], max_afnty)
+
+                frontQ = queue[0]
+                dfq = c * np.sqrt(consistency[num_graph - 1, frontQ]) + (1 - c) * \
+                      afnty_scr(X[num_graph - 1, frontQ], K[num_graph - 1, frontQ], max_afnty)
+                if S_opt > dfq:
+                    u = queue.pop()
+                    queue.insert(0, u)
+
+                """Large Label Last"""
+                # x = np.mean([c * np.sqrt(consistency[num_graph - 1, v]) + (1 - c) * \
+                #              afnty_scr(X[num_graph - 1, v], K[num_graph - 1, v], max_afnty) for v in queue])
+                # while c * np.sqrt(consistency[num_graph - 1, queue[0]]) + (1 - c) * \
+                #       afnty_scr(X[num_graph - 1, queue[0]], K[num_graph - 1, queue[0]], max_afnty) > 0.9*x:
+                #     u = queue[0]
+                #     queue = queue[1:]
+                #     queue.append(u)
+
         if cnt % 2 == 0:
             # consistency = consistency_pair(X)
             consistency = part_consistency(consistency, X, store)

@@ -21,7 +21,7 @@ class_name = ["Car", "Motorbike", "Face", "Winebottle", "Duck"]
 
 # set parameters for offline multi-graph matching test
 test_iter = 5  # test iteration for each class, please set it less than 5 or new data will be generated
-test_mode = "fast-spfa"  # mgm-spfa or fast-spfa
+test_mode = "mgm-spfa"  # mgm-spfa or fast-spfa
 
 # number of graphs, inliers and outliers only affect the generated data (when test_iter is larger than 5),
 # these parameters will not be used when the data is loaded from TestPrepare.
