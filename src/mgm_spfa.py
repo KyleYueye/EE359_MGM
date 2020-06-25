@@ -15,30 +15,38 @@ def afnty_scr(X, K, max_afnty):
     return affinity_score[0][0] / max_afnty
 
 
-def consistency_pair(X):
+def old_consistency_pair(X):
     """
-    compute consistency pair
+    old version of computing consistency pair
     :param X: matching result permutation matrix (m, m, n, n)
     :return: consistency pair (m, m)
     """
-    # m, _, n, _ = X.shape
-    # store_x = [i[0] for i in store]
-    # store_y = [i[1] for i in store]
-    # for i in range(m):
-    #     for j in range(m):
-    #         cnt = 0.0
-    #         X_ij = X[i, j]
-    #         if i in store_x or j in store_y:
-    #             pass
-    #         else:
-    #             continue
-    #         for k in range(m):
-    #             # X_ikj = X[i, k] * X[k, j]
-    #             if ((i, k) not in store) and ((k, j) not in store):
-    #                 continue
-    #             cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
-    #         con_pair[i, j] = 1 - cnt / (2 * m * n)
-    # return con_pair
+    m, _, n, _ = X.shape
+    store_x = [i[0] for i in store]
+    store_y = [i[1] for i in store]
+    for i in range(m):
+        for j in range(m):
+            cnt = 0.0
+            X_ij = X[i, j]
+            if i in store_x or j in store_y:
+                pass
+            else:
+                continue
+            for k in range(m):
+                # X_ikj = X[i, k] * X[k, j]
+                if ((i, k) not in store) and ((k, j) not in store):
+                    continue
+                cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
+            con_pair[i, j] = 1 - cnt / (2 * m * n)
+    return con_pair
+
+
+def consistency_pair(X):
+    """
+    new version of computing consistency pair by matrix operation
+    :param X: matching result permutation matrix (m, m, n, n)
+    :return: consistency pair (m, m)
+    """
     m, _, n, _ = X.shape
     
     X_i = X.reshape(m, 1, m, n, n)
@@ -104,7 +112,7 @@ def mgm_spfa(K, X, num_graph, num_node):
     queue = [x for x in range(num_graph - 1)]
     consistency = consistency_pair(X)
     cnt = 0
-    c = 0.9
+    c = 0.3
     while len(queue) != 0:
         store = []
         cnt += 1
@@ -128,14 +136,11 @@ def mgm_spfa(K, X, num_graph, num_node):
                 queue.append(G_y)
 
                 """Small Label First"""
-                # backQ = queue[-1]
-                # dbq = c * np.sqrt(consistency[num_graph - 1, backQ]) + (1 - c) * \
-                #       afnty_scr(X[num_graph - 1, backQ], K[num_graph - 1, backQ], max_afnty)
 
                 frontQ = queue[0]
-                dfq = c * np.sqrt(consistency[num_graph - 1, frontQ]) + (1 - c) * \
-                      afnty_scr(X[num_graph - 1, frontQ], K[num_graph - 1, frontQ], max_afnty)
-                if S_opt > dfq:
+                S_frontQ = c * np.sqrt(consistency[num_graph - 1, frontQ]) + (1 - c) * \
+                           afnty_scr(X[num_graph - 1, frontQ], K[num_graph - 1, frontQ], max_afnty)
+                if S_opt > S_frontQ:
                     u = queue.pop()
                     queue.insert(0, u)
 
