@@ -114,8 +114,8 @@ def fast_spfa(K, X, num_graph, num_node):
     num_cluster = max(1, num_graph // c_min)
     num_cluster_graph = num_graph // num_cluster
 
-    cluster_list, graph_index = get_cluster(num_cluster, num_cluster_graph, num_graph - 1)
-    # cluster_list, graph_index = spectual_cluster(K, X, max_afnty, num_cluster, num_graph)
+    # cluster_list, graph_index = get_cluster(num_cluster, num_cluster_graph, num_graph - 1)
+    cluster_list, graph_index = spectual_cluster(K, X, max_afnty, num_cluster, num_graph)
 
     for ci in cluster_list:
         ci.append(num_graph - 1)
