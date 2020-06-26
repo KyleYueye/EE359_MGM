@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def afnty_scr(X, K, max_afnty):
     """
     compute the affinity score
@@ -21,24 +20,7 @@ def consistency_pair(X):
     :param X: matching result permutation matrix (m, m, n, n)
     :return: consistency pair (m, m)
     """
-    # m, _, n, _ = X.shape
-    # store_x = [i[0] for i in store]
-    # store_y = [i[1] for i in store]
-    # for i in range(m):
-    #     for j in range(m):
-    #         cnt = 0.0
-    #         X_ij = X[i, j]
-    #         if i in store_x or j in store_y:
-    #             pass
-    #         else:
-    #             continue
-    #         for k in range(m):
-    #             # X_ikj = X[i, k] * X[k, j]
-    #             if ((i, k) not in store) and ((k, j) not in store):
-    #                 continue
-    #             cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
-    #         con_pair[i, j] = 1 - cnt / (2 * m * n)
-    # return con_pair
+    
     m, _, n, _ = X.shape
     
     X_i = X.reshape(m, 1, m, n, n)
