@@ -1,6 +1,11 @@
 import numpy as np
 import random
 from src.mgm_spfa import mgm_spfa
+from sklearn.cluster import SpectralClustering
+
+
+# import warnings
+# warnings.filterwarnings("ignore")
 
 
 def afnty_scr(X, K, max_afnty):
@@ -19,38 +24,20 @@ def afnty_scr(X, K, max_afnty):
 
 def consistency_pair(X):
     """
-    compute consistency pair
+    new version of computing consistency pair by matrix operation
     :param X: matching result permutation matrix (m, m, n, n)
     :return: consistency pair (m, m)
     """
-    # m, _, n, _ = X.shape
-    # store_x = [i[0] for i in store]
-    # store_y = [i[1] for i in store]
-    # for i in range(m):
-    #     for j in range(m):
-    #         cnt = 0.0
-    #         X_ij = X[i, j]
-    #         if i in store_x or j in store_y:
-    #             pass
-    #         else:
-    #             continue
-    #         for k in range(m):
-    #             # X_ikj = X[i, k] * X[k, j]
-    #             if ((i, k) not in store) and ((k, j) not in store):
-    #                 continue
-    #             cnt += np.sum(np.abs(X_ij - X[i, k] * X[k, j]))
-    #         con_pair[i, j] = 1 - cnt / (2 * m * n)
-    # return con_pair
     m, _, n, _ = X.shape
-    
+
     X_i = X.reshape(m, 1, m, n, n)
     X_j = X.transpose(1, 0, 2, 3).reshape(1, m, m, n, n)
     X_k = np.expand_dims(X, 2).repeat(m, axis=2)
-    
+
     X_ikj = np.matmul(X_i, X_j)
     X_sum = np.abs(X_k - X_ikj)
-    res = 1-np.sum(X_sum, axis=(2,3,4)) / (2 * m * n)
-    
+    res = 1 - np.sum(X_sum, axis=(2, 3, 4)) / (2 * m * n)
+
     return res
 
 
@@ -77,6 +64,31 @@ def get_cluster(num_cluster, num_cluster_graph, num_graph):
     return cluster_list, graph_index
 
 
+def spectual_cluster(K, X, max_afnty, num_cluster, num_graph):
+    # m, _, n, _ = X.shape
+    m = num_graph
+    affinity = np.zeros((m, m))
+    consistency = consistency_pair(X)
+    c = 0.4
+    for i in range(m):
+        for j in range(m):
+            S_ij = c * np.sqrt(consistency[i, j]) + (1 - c) * \
+                   afnty_scr(X[i, j], K[i, j], max_afnty)
+            affinity[i, j] = S_ij
+
+    avg_afnty = affinity + affinity.transpose()
+    avg_afnty /= 2
+
+    res = SpectralClustering(n_clusters=num_cluster,
+                             assign_labels='discretize',
+                             affinity='precomputed').fit(avg_afnty)
+    labels_ = res.labels_
+    clusters_list = [[] for x in range(int(np.max(labels_)) + 1)]
+    for i in range(m):
+        clusters_list[labels_[i]].append(i)
+    return clusters_list, labels_
+
+
 def fast_spfa(K, X, num_graph, num_node):
     """
     :param K: affinity matrix, (num_graph, num_graph, num_node^2, num_node^2)
@@ -91,7 +103,7 @@ def fast_spfa(K, X, num_graph, num_node):
     # for i in range(num_graph):
     #     for j in range(num_graph):
     #         afnty[i, j] = afnty_scr(X[i, j], K[i, j], 1.0)
-    
+
     X = X.transpose(0, 1, 3, 2)
     pro_X = X.reshape(num_graph, num_graph, -1, 1)
     pro_X_t = X.reshape(num_graph, num_graph, 1, -1)
@@ -102,7 +114,8 @@ def fast_spfa(K, X, num_graph, num_node):
     num_cluster = max(1, num_graph // c_min)
     num_cluster_graph = num_graph // num_cluster
 
-    cluster_list, graph_index = get_cluster(num_cluster, num_cluster_graph, num_graph - 1)
+    # cluster_list, graph_index = get_cluster(num_cluster, num_cluster_graph, num_graph - 1)
+    cluster_list, graph_index = spectual_cluster(K, X, max_afnty, num_cluster, num_graph)
 
     for ci in cluster_list:
         ci.append(num_graph - 1)
@@ -114,7 +127,7 @@ def fast_spfa(K, X, num_graph, num_node):
             for num_j, j in enumerate(ci):
                 X[i, j] = X_opt[num_i, num_j]
 
-    c = 0.5
+    c = 0.4
     consistency = consistency_pair(X)
     for i in range(num_graph):
         for j in range(num_graph):

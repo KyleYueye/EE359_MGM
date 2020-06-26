@@ -1,0 +1,316 @@
+PS C:\Users\KyleYue\PycharmProjects\DM> python .\online_test.py
+Test mgm-spfa begin: test online multi-graph matching on WILLOW-ObjectClass
+********************************************************************
+Test on class Car
+iter: 0/5
+number of graphs: 17, accuracy: 0.4305, time: 0.0758
+number of graphs: 18, accuracy: 0.4090, time: 0.0997
+number of graphs: 19, accuracy: 0.4219, time: 0.1157
+number of graphs: 20, accuracy: 0.4313, time: 0.1377
+number of graphs: 21, accuracy: 0.4388, time: 0.1536
+number of graphs: 22, accuracy: 0.4281, time: 0.1795
+number of graphs: 23, accuracy: 0.4866, time: 0.2818
+number of graphs: 24, accuracy: 0.4839, time: 0.2424
+
+iter: 1/5
+number of graphs: 17, accuracy: 0.5813, time: 0.0798
+number of graphs: 18, accuracy: 0.5664, time: 0.1082
+number of graphs: 19, accuracy: 0.5960, time: 0.1277
+number of graphs: 20, accuracy: 0.6535, time: 0.6613
+number of graphs: 21, accuracy: 0.6600, time: 0.1735
+number of graphs: 22, accuracy: 0.7265, time: 0.2493
+number of graphs: 23, accuracy: 0.7415, time: 0.2224
+number of graphs: 24, accuracy: 0.7535, time: 0.4768
+
+iter: 2/5
+number of graphs: 17, accuracy: 0.4715, time: 0.0858
+number of graphs: 18, accuracy: 0.5052, time: 0.0987
+number of graphs: 19, accuracy: 0.5469, time: 0.1177
+number of graphs: 20, accuracy: 0.5382, time: 0.1247
+number of graphs: 21, accuracy: 0.5917, time: 0.1865
+number of graphs: 22, accuracy: 0.6388, time: 0.2254
+number of graphs: 23, accuracy: 0.6754, time: 0.2144
+number of graphs: 24, accuracy: 0.6679, time: 0.2134
+
+iter: 3/5
+number of graphs: 17, accuracy: 0.6555, time: 0.0947
+number of graphs: 18, accuracy: 0.7744, time: 0.4458
+number of graphs: 19, accuracy: 0.8509, time: 0.4318
+number of graphs: 20, accuracy: 0.8391, time: 0.1586
+number of graphs: 21, accuracy: 0.8407, time: 0.2668
+number of graphs: 22, accuracy: 0.8420, time: 0.2284
+number of graphs: 23, accuracy: 0.8399, time: 0.2474
+number of graphs: 24, accuracy: 0.8631, time: 1.6112
+
+iter: 4/5
+number of graphs: 17, accuracy: 0.7238, time: 0.0918
+number of graphs: 18, accuracy: 0.7135, time: 0.1027
+number of graphs: 19, accuracy: 0.7614, time: 0.1346
+number of graphs: 20, accuracy: 0.7072, time: 0.1327
+number of graphs: 21, accuracy: 0.6967, time: 0.2304
+number of graphs: 22, accuracy: 0.7041, time: 0.2339
+number of graphs: 23, accuracy: 0.7056, time: 0.2324
+number of graphs: 24, accuracy: 0.7051, time: 0.2434
+
+Overall performance on class Car
+number of graphs: 17, accuracy: 0.5725, time: 0.0856
+number of graphs: 18, accuracy: 0.5937, time: 0.1710
+number of graphs: 19, accuracy: 0.6354, time: 0.1855
+number of graphs: 20, accuracy: 0.6339, time: 0.2430
+number of graphs: 21, accuracy: 0.6456, time: 0.2021
+number of graphs: 22, accuracy: 0.6679, time: 0.2233
+number of graphs: 23, accuracy: 0.6898, time: 0.2397
+number of graphs: 24, accuracy: 0.6947, time: 0.5574
+Online Test, mode mgm-spfa, class Car passed
+
+********************************************************************
+Test on class Motorbike
+iter: 0/5
+number of graphs: 17, accuracy: 0.7770, time: 0.3361
+number of graphs: 18, accuracy: 0.8125, time: 0.5425
+number of graphs: 19, accuracy: 0.8367, time: 0.8772
+number of graphs: 20, accuracy: 0.9116, time: 0.8582
+number of graphs: 21, accuracy: 0.9178, time: 1.0692
+number of graphs: 22, accuracy: 0.9268, time: 0.4867
+number of graphs: 23, accuracy: 0.9300, time: 0.6553
+number of graphs: 24, accuracy: 0.9323, time: 1.5369
+
+iter: 1/5
+number of graphs: 17, accuracy: 0.8562, time: 0.1366
+number of graphs: 18, accuracy: 0.8682, time: 0.1247
+number of graphs: 19, accuracy: 0.8981, time: 0.2018
+number of graphs: 20, accuracy: 0.8964, time: 0.4378
+number of graphs: 21, accuracy: 0.9008, time: 0.1905
+number of graphs: 22, accuracy: 0.8966, time: 0.2394
+number of graphs: 23, accuracy: 0.9052, time: 1.2537
+number of graphs: 24, accuracy: 0.9155, time: 1.4413
+
+iter: 2/5
+number of graphs: 17, accuracy: 0.8187, time: 0.1097
+number of graphs: 18, accuracy: 0.8215, time: 0.1067
+number of graphs: 19, accuracy: 0.8355, time: 0.5826
+number of graphs: 20, accuracy: 0.8560, time: 0.6109
+number of graphs: 21, accuracy: 0.8822, time: 0.7720
+number of graphs: 22, accuracy: 0.9002, time: 0.2743
+number of graphs: 23, accuracy: 0.9060, time: 1.0203
+number of graphs: 24, accuracy: 0.8994, time: 0.2728
+
+iter: 3/5
+number of graphs: 17, accuracy: 0.8434, time: 0.0938
+number of graphs: 18, accuracy: 0.8564, time: 0.1476
+number of graphs: 19, accuracy: 0.8565, time: 0.1416
+number of graphs: 20, accuracy: 0.8676, time: 0.2085
+number of graphs: 21, accuracy: 0.8658, time: 0.1795
+number of graphs: 22, accuracy: 0.8669, time: 0.2852
+number of graphs: 23, accuracy: 0.8944, time: 0.3461
+number of graphs: 24, accuracy: 0.8970, time: 1.3175
+
+iter: 4/5
+number of graphs: 17, accuracy: 0.9449, time: 0.0858
+number of graphs: 18, accuracy: 0.9498, time: 0.5166
+number of graphs: 19, accuracy: 0.9438, time: 0.1197
+number of graphs: 20, accuracy: 0.9413, time: 0.3691
+number of graphs: 21, accuracy: 0.9475, time: 0.9764
+number of graphs: 22, accuracy: 0.9440, time: 0.2473
+number of graphs: 23, accuracy: 0.9459, time: 0.4543
+number of graphs: 24, accuracy: 0.9478, time: 1.8830
+
+Overall performance on class Motorbike
+number of graphs: 17, accuracy: 0.8480, time: 0.1524
+number of graphs: 18, accuracy: 0.8617, time: 0.2876
+number of graphs: 19, accuracy: 0.8741, time: 0.3846
+number of graphs: 20, accuracy: 0.8946, time: 0.4969
+number of graphs: 21, accuracy: 0.9028, time: 0.6375
+number of graphs: 22, accuracy: 0.9069, time: 0.3066
+number of graphs: 23, accuracy: 0.9163, time: 0.7459
+number of graphs: 24, accuracy: 0.9184, time: 1.2903
+Online Test, mode mgm-spfa, class Motorbike passed
+
+********************************************************************
+Test on class Face
+iter: 0/5
+number of graphs: 17, accuracy: 0.9055, time: 0.1077
+number of graphs: 18, accuracy: 0.9035, time: 0.1007
+number of graphs: 19, accuracy: 0.9000, time: 0.1338
+number of graphs: 20, accuracy: 0.9136, time: 0.1466
+number of graphs: 21, accuracy: 0.9180, time: 0.8553
+number of graphs: 22, accuracy: 0.9147, time: 0.2224
+number of graphs: 23, accuracy: 0.9184, time: 0.2463
+number of graphs: 24, accuracy: 0.9206, time: 0.2334
+
+iter: 1/5
+number of graphs: 17, accuracy: 1.0000, time: 0.0998
+number of graphs: 18, accuracy: 0.9889, time: 0.1416
+number of graphs: 19, accuracy: 0.9895, time: 0.3181
+number of graphs: 20, accuracy: 0.9900, time: 0.1885
+number of graphs: 21, accuracy: 0.9782, time: 0.1705
+number of graphs: 22, accuracy: 0.9819, time: 1.6642
+number of graphs: 23, accuracy: 0.9740, time: 0.2703
+number of graphs: 24, accuracy: 0.9822, time: 2.4101
+
+iter: 2/5
+number of graphs: 17, accuracy: 0.9570, time: 0.3860
+number of graphs: 18, accuracy: 0.9616, time: 0.1047
+number of graphs: 19, accuracy: 0.9645, time: 0.6752
+number of graphs: 20, accuracy: 0.9684, time: 0.1536
+number of graphs: 21, accuracy: 0.9610, time: 0.1686
+number of graphs: 22, accuracy: 0.9556, time: 0.1955
+number of graphs: 23, accuracy: 0.9562, time: 0.2144
+number of graphs: 24, accuracy: 0.9584, time: 1.7045
+
+iter: 3/5
+number of graphs: 17, accuracy: 0.9316, time: 0.1237
+number of graphs: 18, accuracy: 0.9287, time: 0.1097
+number of graphs: 19, accuracy: 0.9435, time: 0.6164
+number of graphs: 20, accuracy: 0.9260, time: 0.1426
+number of graphs: 21, accuracy: 0.9158, time: 0.1716
+number of graphs: 22, accuracy: 0.9385, time: 0.9624
+number of graphs: 23, accuracy: 0.9415, time: 1.2334
+number of graphs: 24, accuracy: 0.9539, time: 1.7952
+
+iter: 4/5
+number of graphs: 17, accuracy: 0.9828, time: 0.5146
+number of graphs: 18, accuracy: 0.9841, time: 0.8029
+number of graphs: 19, accuracy: 0.9855, time: 0.7432
+number of graphs: 20, accuracy: 0.9798, time: 0.1701
+number of graphs: 21, accuracy: 0.9820, time: 1.4587
+number of graphs: 22, accuracy: 0.9834, time: 1.3235
+number of graphs: 23, accuracy: 0.9787, time: 0.2014
+number of graphs: 24, accuracy: 0.9811, time: 2.4595
+
+Overall performance on class Face
+number of graphs: 17, accuracy: 0.9554, time: 0.2463
+number of graphs: 18, accuracy: 0.9534, time: 0.2519
+number of graphs: 19, accuracy: 0.9566, time: 0.4973
+number of graphs: 20, accuracy: 0.9556, time: 0.1603
+number of graphs: 21, accuracy: 0.9510, time: 0.5649
+number of graphs: 22, accuracy: 0.9548, time: 0.8736
+number of graphs: 23, accuracy: 0.9538, time: 0.4332
+number of graphs: 24, accuracy: 0.9592, time: 1.7205
+Online Test, mode mgm-spfa, class Face passed
+
+********************************************************************
+Test on class Winebottle
+iter: 0/5
+number of graphs: 17, accuracy: 0.6723, time: 0.0928
+number of graphs: 18, accuracy: 0.6907, time: 0.1047
+number of graphs: 19, accuracy: 0.7213, time: 0.1242
+number of graphs: 20, accuracy: 0.7562, time: 0.1725
+number of graphs: 21, accuracy: 0.8468, time: 0.8318
+number of graphs: 22, accuracy: 0.8544, time: 0.2194
+number of graphs: 23, accuracy: 0.8494, time: 0.2852
+number of graphs: 24, accuracy: 0.8444, time: 0.3272
+
+iter: 1/5
+number of graphs: 17, accuracy: 0.8148, time: 0.2090
+number of graphs: 18, accuracy: 0.8097, time: 0.1187
+number of graphs: 19, accuracy: 0.8596, time: 0.3012
+number of graphs: 20, accuracy: 0.8773, time: 0.6144
+number of graphs: 21, accuracy: 0.8770, time: 0.2598
+number of graphs: 22, accuracy: 0.8898, time: 0.2424
+number of graphs: 23, accuracy: 0.9035, time: 1.2243
+number of graphs: 24, accuracy: 0.9072, time: 0.8423
+
+iter: 2/5
+number of graphs: 17, accuracy: 0.6305, time: 0.1077
+number of graphs: 18, accuracy: 0.6419, time: 0.1237
+number of graphs: 19, accuracy: 0.7673, time: 0.1466
+number of graphs: 20, accuracy: 0.8147, time: 0.1945
+number of graphs: 21, accuracy: 0.8782, time: 0.7111
+number of graphs: 22, accuracy: 0.8995, time: 0.4992
+number of graphs: 23, accuracy: 0.9085, time: 1.0567
+number of graphs: 24, accuracy: 0.9263, time: 1.9294
+
+iter: 3/5
+number of graphs: 17, accuracy: 0.8402, time: 0.0858
+number of graphs: 18, accuracy: 0.8398, time: 0.1167
+number of graphs: 19, accuracy: 0.8466, time: 0.1396
+number of graphs: 20, accuracy: 0.8850, time: 0.1556
+number of graphs: 21, accuracy: 0.8990, time: 0.4049
+number of graphs: 22, accuracy: 0.9166, time: 1.1310
+number of graphs: 23, accuracy: 0.9300, time: 1.0847
+number of graphs: 24, accuracy: 0.9344, time: 1.6072
+
+iter: 4/5
+number of graphs: 17, accuracy: 0.8895, time: 0.1127
+number of graphs: 18, accuracy: 0.9066, time: 0.2484
+number of graphs: 19, accuracy: 0.9321, time: 0.1695
+number of graphs: 20, accuracy: 0.9349, time: 0.1845
+number of graphs: 21, accuracy: 0.9287, time: 0.4159
+number of graphs: 22, accuracy: 0.9340, time: 1.0597
+number of graphs: 23, accuracy: 0.9322, time: 0.2343
+number of graphs: 24, accuracy: 0.9393, time: 2.1279
+
+Overall performance on class Winebottle
+number of graphs: 17, accuracy: 0.7695, time: 0.1216
+number of graphs: 18, accuracy: 0.7777, time: 0.1424
+number of graphs: 19, accuracy: 0.8254, time: 0.1762
+number of graphs: 20, accuracy: 0.8536, time: 0.2643
+number of graphs: 21, accuracy: 0.8860, time: 0.5247
+number of graphs: 22, accuracy: 0.8989, time: 0.6304
+number of graphs: 23, accuracy: 0.9047, time: 0.7770
+number of graphs: 24, accuracy: 0.9103, time: 1.3668
+Online Test, mode mgm-spfa, class Winebottle passed
+
+********************************************************************
+Test on class Duck
+iter: 0/5
+number of graphs: 17, accuracy: 0.7453, time: 0.3326
+number of graphs: 18, accuracy: 0.8291, time: 0.4473
+number of graphs: 19, accuracy: 0.8272, time: 0.1327
+number of graphs: 20, accuracy: 0.8485, time: 0.9451
+number of graphs: 21, accuracy: 0.7965, time: 0.1616
+number of graphs: 22, accuracy: 0.8098, time: 0.2234
+number of graphs: 23, accuracy: 0.7533, time: 0.2064
+number of graphs: 24, accuracy: 0.7639, time: 2.1852
+
+iter: 1/5
+number of graphs: 17, accuracy: 0.5738, time: 0.0928
+number of graphs: 18, accuracy: 0.6131, time: 0.0997
+number of graphs: 19, accuracy: 0.6491, time: 0.1336
+number of graphs: 20, accuracy: 0.6302, time: 0.1326
+number of graphs: 21, accuracy: 0.6690, time: 0.1775
+number of graphs: 22, accuracy: 0.6950, time: 0.2161
+number of graphs: 23, accuracy: 0.7696, time: 0.3027
+number of graphs: 24, accuracy: 0.7624, time: 0.2394
+
+iter: 2/5
+number of graphs: 17, accuracy: 0.6762, time: 0.2812
+number of graphs: 18, accuracy: 0.6869, time: 0.1735
+number of graphs: 19, accuracy: 0.6284, time: 0.1057
+number of graphs: 20, accuracy: 0.6346, time: 0.1386
+number of graphs: 21, accuracy: 0.6345, time: 0.1646
+number of graphs: 22, accuracy: 0.6229, time: 0.2075
+number of graphs: 23, accuracy: 0.6758, time: 1.0851
+number of graphs: 24, accuracy: 0.6922, time: 1.2148
+
+iter: 3/5
+number of graphs: 17, accuracy: 0.5012, time: 0.0918
+number of graphs: 18, accuracy: 0.4651, time: 0.0938
+number of graphs: 19, accuracy: 0.4454, time: 0.1167
+number of graphs: 20, accuracy: 0.4958, time: 0.1346
+number of graphs: 21, accuracy: 0.6062, time: 0.2618
+number of graphs: 22, accuracy: 0.6510, time: 0.2479
+number of graphs: 23, accuracy: 0.6469, time: 0.2523
+number of graphs: 24, accuracy: 0.6733, time: 1.3305
+
+iter: 4/5
+number of graphs: 17, accuracy: 0.4957, time: 0.0868
+number of graphs: 18, accuracy: 0.4581, time: 0.1142
+number of graphs: 19, accuracy: 0.5472, time: 0.1915
+number of graphs: 20, accuracy: 0.5729, time: 0.1790
+number of graphs: 21, accuracy: 0.5403, time: 0.1556
+number of graphs: 22, accuracy: 0.5138, time: 0.1905
+number of graphs: 23, accuracy: 0.5271, time: 0.1915
+number of graphs: 24, accuracy: 0.5652, time: 0.5950
+
+Overall performance on class Duck
+number of graphs: 17, accuracy: 0.5984, time: 0.1770
+number of graphs: 18, accuracy: 0.6104, time: 0.1857
+number of graphs: 19, accuracy: 0.6194, time: 0.1360
+number of graphs: 20, accuracy: 0.6364, time: 0.3060
+number of graphs: 21, accuracy: 0.6493, time: 0.1842
+number of graphs: 22, accuracy: 0.6585, time: 0.2171
+number of graphs: 23, accuracy: 0.6745, time: 0.4076
+number of graphs: 24, accuracy: 0.6914, time: 1.1130
+Online Test, mode mgm-spfa, class Duck passed

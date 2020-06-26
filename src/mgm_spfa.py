@@ -16,21 +16,24 @@ def afnty_scr(X, K, max_afnty):
 
 def consistency_pair(X):
     """
-    compute consistency pair
+    new version of computing consistency pair by matrix operation
     :param X: matching result permutation matrix (m, m, n, n)
     :return: consistency pair (m, m)
     """
+<<<<<<< HEAD
     
+=======
+>>>>>>> 69aa3402405885f2d6e96d669bd5263c5a2feb79
     m, _, n, _ = X.shape
-    
+
     X_i = X.reshape(m, 1, m, n, n)
     X_j = X.transpose(1, 0, 2, 3).reshape(1, m, m, n, n)
     X_k = np.expand_dims(X, 2).repeat(m, axis=2)
-    
+
     X_ikj = np.matmul(X_i, X_j)
     X_sum = np.abs(X_k - X_ikj)
-    res = 1-np.sum(X_sum, axis=(2,3,4)) / (2 * m * n)
-    
+    res = 1 - np.sum(X_sum, axis=(2, 3, 4)) / (2 * m * n)
+
     return res
 
 
@@ -76,7 +79,7 @@ def mgm_spfa(K, X, num_graph, num_node):
     # for i in range(num_graph):
     #     for j in range(num_graph):
     #         afnty[i, j] = afnty_scr(X[i, j], K[i, j], 1.0)
-    
+
     X = X.transpose(0, 1, 3, 2)
     pro_X = X.reshape(num_graph, num_graph, -1, 1)
     pro_X_t = X.reshape(num_graph, num_graph, 1, -1)
@@ -86,27 +89,46 @@ def mgm_spfa(K, X, num_graph, num_node):
     queue = [x for x in range(num_graph - 1)]
     consistency = consistency_pair(X)
     cnt = 0
-    c = 0.9
+    c = 0.4
     while len(queue) != 0:
         store = []
         cnt += 1
         G_x = queue[0]
         queue.remove(G_x)
-        for i in range(num_graph - 1):
-            if i == G_x:
+        for G_y in range(num_graph - 1):
+            if G_y == G_x:
                 continue
-            X_org = X[num_graph - 1, i]
-            X_opt = np.matmul(X[num_graph - 1, G_x], X[G_x, i])
-            K_org = K[num_graph - 1, i]
-            S_org = c * np.sqrt(consistency[num_graph - 1, i]) + (1 - c) * afnty_scr(X_org, K_org, max_afnty)
-            S_opt = c * np.sqrt(consistency[num_graph - 1, G_x] * consistency[G_x, i]) + (1 - c) * afnty_scr(X_opt,
-                                                                                                             K_org,
-                                                                                                             max_afnty)
+            X_org = X[num_graph - 1, G_y]
+            X_opt = np.matmul(X[num_graph - 1, G_x], X[G_x, G_y])
+            K_org = K[num_graph - 1, G_y]
+            S_org = c * np.sqrt(consistency[num_graph - 1, G_y]) + (1 - c) * afnty_scr(X_org, K_org, max_afnty)
+            S_opt = c * np.sqrt(consistency[num_graph - 1, G_x] * consistency[G_x, G_y]) + (1 - c) * afnty_scr(X_opt,
+                                                                                                               K_org,
+                                                                                                               max_afnty)
             if S_org < S_opt:
-                X[num_graph - 1, i] = X_opt
-                store.append((num_graph - 1, i))
-                X[i, num_graph - 1] = X_opt.transpose()
-                store.append((i, num_graph - 1))
+                X[num_graph - 1, G_y] = X_opt
+                store.append((num_graph - 1, G_y))
+                X[G_y, num_graph - 1] = X_opt.transpose()
+                store.append((G_y, num_graph - 1))
+                queue.append(G_y)
+
+                """Small Label First"""
+                frontQ = queue[0]
+                S_frontQ = c * np.sqrt(consistency[num_graph - 1, frontQ]) + (1 - c) * \
+                           afnty_scr(X[num_graph - 1, frontQ], K[num_graph - 1, frontQ], max_afnty)
+                if S_opt > S_frontQ:
+                    u = queue.pop()
+                    queue.insert(0, u)
+
+                """Large Label Last"""
+                # x = np.mean([c * np.sqrt(consistency[num_graph - 1, v]) + (1 - c) * \
+                #              afnty_scr(X[num_graph - 1, v], K[num_graph - 1, v], max_afnty) for v in queue])
+                # while c * np.sqrt(consistency[num_graph - 1, queue[0]]) + (1 - c) * \
+                #       afnty_scr(X[num_graph - 1, queue[0]], K[num_graph - 1, queue[0]], max_afnty) > 0.9*x:
+                #     u = queue[0]
+                #     queue = queue[1:]
+                #     queue.append(u)
+
         if cnt % 2 == 0:
             # consistency = consistency_pair(X)
             consistency = part_consistency(consistency, X, store)
